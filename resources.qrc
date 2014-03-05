@@ -1,0 +1,17 @@
+<RCC>
+  <qresource prefix="/">
+    <file>icons/draw-freehand.png</file>
+    <file>icons/configure.png</file>
+    <file>icons/arrow-left.png</file>
+    <file>icons/system-switch-user.png</file>
+    <file>icons/arrow-right.png</file>
+    <file>icons/call-start.png</file>
+    <file>icons/call-stop.png</file>
+    <file>icons/mail-send.png</file>
+    <file>icons/network-connect.png</file>
+    <file>icons/network-disconnect.png</file>
+    <file>icons/zoom-in.png</file>
+    <file>icons/zoom-out.png</file>
+    <file>icons/repository.png</file>
+  </qresource>
+</RCC>
