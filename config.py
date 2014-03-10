@@ -28,6 +28,8 @@ class ConfigurationSettings(QObject):
         self.__serverPort = 9615
         self.__clientAddress = "127.0.0.1"
         self.__clientPort = self.serverPort
+        self.__taskbarHeight = 79
+        self.__windowbarHeight = 26
 
         # read settings from file
         try:
@@ -44,6 +46,8 @@ class ConfigurationSettings(QObject):
         settings.setValue("serverPort", 9615)
         settings.setValue("clientAddress", "127.0.0.1")
         settings.setValue("clientPort", 9615)
+        settings.setValue("taskbarHeight", 79)
+        settings.setValue("windowbarHeight", 26)
 
     def readSettings(self):
         settings = self.getSettings()
@@ -51,6 +55,8 @@ class ConfigurationSettings(QObject):
         self.serverPort = settings.value("serverPort", type=int)
         self.clientAddress = settings.value("clientAddress", type=str)
         self.clientPort = settings.value("clientPort", type=int)
+        self.taskbarHeight = settings.value("taskbarHeight", type=int)
+        self.windowbarHeight = settings.value("windowbarHeight", type=int)
 
     def writeSettings(self):
         settings = self.getSettings()
@@ -58,6 +64,8 @@ class ConfigurationSettings(QObject):
         settings.setValue("serverPort", self.serverPort)
         settings.setValue("clientAddress", self.clientAddress)
         settings.setValue("clientPort", self.clientPort)
+        settings.setValue("taskbarHeight", self.taskbarHeight)
+        settings.setValue("windowbarHeight", self.windowbarHeight)
 
     @property
     def serverAddress(self):
@@ -112,3 +120,21 @@ class ConfigurationSettings(QObject):
 
     def setServerPortDefault(self):
         self.serverPort = 9615
+
+    @property
+    def taskbarHeight(self):
+        return self.__taskbarHeight
+    @taskbarHeight.setter
+    def taskbarHeight(self, height):
+        self.__taskbarHeight = height
+    def setTaskbarHeight(self, height):
+        self.taskbarHeight = height
+
+    @property
+    def windowbarHeight(self):
+        return self.__windowbarHeight
+    @windowbarHeight.setter
+    def windowbarHeight(self, height):
+        self.__windowbarHeight = height
+    def setWindowbarHeight(self, height):
+        self.windowbarHeight = height

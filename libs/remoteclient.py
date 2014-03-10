@@ -26,13 +26,14 @@ class QgsRemoteCommandClient(QTcpSocket):
     #   - sync buttons send event
     #   - source SRS coords --> 4326 --> send --> 4326 --> goal SRS coords
 
-    def __init__(self, iface, host='localhost', port=9615, synced=False):
+    def __init__(self, iface, config, host='localhost', port=9615, synced=False):
         super(QgsRemoteCommandClient, self).__init__()
 
         # QGIS related
         self.iface = iface
         self.mainWindow = self.iface.mainWindow()
         self.canvas = self.iface.mapCanvas()
+        self.config = config
         self.__synced = synced
 
         self.crsTransform = CoordinateTransformation(self.canvas.mapRenderer().destinationCrs())
@@ -135,28 +136,31 @@ class QgsRemoteCommandClient(QTcpSocket):
                self.clientListUpdated.emit(ClientListModel(commandFromServer.clients))
             elif isinstance(commandFromServer, CommandSetWindowPosition):
                 screenHeight = self.__getScreenGeometry().height()
-                screenWidth = self.__getScreenGeometry().width()                
+                screenWidth = self.__getScreenGeometry().width()
+                winTaskHeight = self.config.taskbarHeight + self.config.windowbarHeight
                 if commandFromServer.positionCode == positionFullscreen:
                     self.mainWindow.move(0, 0)
-                    self.mainWindow.resize(screenWidth, screenHeight)                    
+                    self.mainWindow.resize(screenWidth, screenHeight)
                 elif commandFromServer.positionCode == positionLeft:
                     self.mainWindow.move(0, 0)
-                    self.mainWindow.resize(screenWidth/2, screenHeight)                    
+                    self.mainWindow.resize(screenWidth/2, screenHeight)
                 elif commandFromServer.positionCode == positionRight:
                     self.mainWindow.move(screenWidth/2, 0)
                     self.mainWindow.resize(screenWidth/2, screenHeight)
                 elif commandFromServer.positionCode == positionUpperLeft:
                     self.mainWindow.move(0, 0)                    
-                    self.mainWindow.resize(screenWidth/2, screenHeight/2)
+                    self.mainWindow.resize(screenWidth/2, screenHeight/2 - winTaskHeight/2)
                 elif commandFromServer.positionCode == positionUpperRight:
-                    self.mainWindow.move(screenWidth/2, 0)                
-                    self.mainWindow.resize(screenWidth/2, screenHeight/2)
+                    self.mainWindow.move(screenWidth/2, 0)
+                    self.mainWindow.resize(screenWidth/2, screenHeight/2  - winTaskHeight/2)
+                    
                 elif commandFromServer.positionCode == positionLowerRight:
-                    self.mainWindow.move(screenWidth/2, screenHeight/2)
-                    self.mainWindow.resize(screenWidth/2, screenHeight/2)
+                    self.mainWindow.move(screenWidth/2, screenHeight/2 - self.config.windowbarHeight)
+                    self.mainWindow.resize(screenWidth/2, screenHeight/2  - winTaskHeight/2)
+                    
                 elif commandFromServer.positionCode == positionLowerLeft:
-                    self.mainWindow.move(0, screenHeight/2)
-                    self.mainWindow.resize(screenWidth/2, screenHeight/2)
+                    self.mainWindow.move(0, screenHeight/2 - self.config.windowbarHeight)
+                    self.mainWindow.resize(screenWidth/2, screenHeight/2  - winTaskHeight/2)
                         
             elif self.isSynced():
                 if isinstance(commandFromServer, CommandZoomIn):

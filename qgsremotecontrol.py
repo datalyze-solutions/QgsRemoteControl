@@ -62,7 +62,7 @@ class QgsRemoteControl(object):
         # init variables
         self.config = ConfigurationSettings()
         self.server = QgsRemoteCommandServer(host=self.config.serverAddress, port=self.config.serverPort)
-        self.client = QgsRemoteCommandClient(self.iface, host=self.config.clientAddress, port=self.config.clientPort)
+        self.client = QgsRemoteCommandClient(self.iface, self.config, host=self.config.clientAddress, port=self.config.clientPort)
 
     def initGui(self):
         # client actions
@@ -107,11 +107,15 @@ class QgsRemoteControl(object):
         self.remoteControlDockWidget.serverPortSpinBox.setValue(self.config.serverPort)
         self.remoteControlDockWidget.clientAddressLineEdit.setText(self.config.clientAddress)
         self.remoteControlDockWidget.clientPortSpinBox.setValue(self.config.clientPort)
+        self.remoteControlDockWidget.taskbarHeightSpinBox.setValue(self.config.taskbarHeight)
+        self.remoteControlDockWidget.windowbarHeightSpinBox.setValue(self.config.windowbarHeight)
         
         self.remoteControlDockWidget.serverAddressLineEdit.textChanged.connect(self.config.setServerAddress)
         self.remoteControlDockWidget.serverPortSpinBox.valueChanged.connect(self.config.setServerPort)
         self.remoteControlDockWidget.clientAddressLineEdit.textChanged.connect(self.config.setClientAddress)
         self.remoteControlDockWidget.clientPortSpinBox.valueChanged.connect(self.config.setClientPort)
+        self.remoteControlDockWidget.taskbarHeightSpinBox.valueChanged.connect(self.config.setTaskbarHeight)
+        self.remoteControlDockWidget.windowbarHeightSpinBox.valueChanged.connect(self.config.setWindowbarHeight)
 
         self.remoteControlDockWidget.serverAddressListenLocalhostToolButton.clicked.connect(self.config.setServerAddressToLocalhost)
         self.remoteControlDockWidget.serverAddressListenAllToolButton.clicked.connect(self.config.setServerAddressToAll)
@@ -155,7 +159,7 @@ class QgsRemoteControl(object):
 
     def connectDisconnectClient(self, checked):        
         if checked:
-            self.client = QgsRemoteCommandClient(self.iface, host=self.config.clientAddress, port=self.config.clientPort)
+            self.client = QgsRemoteCommandClient(self.iface, self.config, host=self.config.clientAddress, port=self.config.clientPort)
             self.actionClientArrangeWindows.triggered.connect(self.client.arrangeWindows)
 
             # client status
