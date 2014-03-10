@@ -1,5 +1,11 @@
 <RCC>
   <qresource prefix="/">
+    <file>icons/draw-eraser.png</file>
+    <file>icons/user-desktop.png</file>
+    <file>icons/arrange-windows.png</file>
+    <file>icons/network-workgroup.png</file>
+    <file>icons/server-toggle.png</file>
+    <file>icons/client-toggle.png</file>
     <file>icons/draw-freehand.png</file>
     <file>icons/configure.png</file>
     <file>icons/arrow-left.png</file>

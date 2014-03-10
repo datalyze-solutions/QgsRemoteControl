@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>247</width>
-    <height>211</height>
+    <width>286</width>
+    <height>298</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,6 +15,19 @@
   </property>
   <widget class="QWidget" name="dockWidgetContents">
    <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
@@ -26,93 +39,21 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
-         <layout class="QGridLayout" name="gridLayout">
-          <item row="0" column="1">
-           <widget class="QLineEdit" name="serverAddressLineEdit">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-            <property name="text">
-             <string>127.0.0.1</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="portLabel">
-            <property name="text">
-             <string>Port</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="0">
-           <widget class="QLabel" name="serverAddressLabel">
-            <property name="text">
-             <string>Host</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QSpinBox" name="portSpinBox">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-            <property name="minimum">
-             <number>1</number>
-            </property>
-            <property name="maximum">
-             <number>65535</number>
-            </property>
-            <property name="value">
-             <number>9615</number>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="2">
-           <widget class="QToolButton" name="portEditToolButton">
-            <property name="text">
-             <string>...</string>
-            </property>
-            <property name="icon">
-             <iconset resource="resources.qrc">
-              <normaloff>:/icons/draw-freehand.png</normaloff>:/icons/draw-freehand.png</iconset>
-            </property>
-            <property name="checkable">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="2">
-           <widget class="QToolButton" name="serverAddressEditToolButton">
-            <property name="text">
-             <string>...</string>
-            </property>
-            <property name="icon">
-             <iconset resource="resources.qrc">
-              <normaloff>:/icons/draw-freehand.png</normaloff>:/icons/draw-freehand.png</iconset>
-            </property>
-            <property name="checkable">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
-           <widget class="QToolButton" name="startServerToolButton">
+           <widget class="QToolButton" name="startStopServerToolButton">
             <property name="enabled">
              <bool>true</bool>
             </property>
             <property name="toolTip">
-             <string>start Server</string>
+             <string>start/stop server</string>
             </property>
             <property name="text">
              <string>start Server</string>
             </property>
             <property name="icon">
              <iconset resource="resources.qrc">
-              <normaloff>:/icons/call-start.png</normaloff>:/icons/call-start.png</iconset>
+              <normaloff>:/icons/server-toggle.png</normaloff>:/icons/server-toggle.png</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -120,28 +61,8 @@
               <height>32</height>
              </size>
             </property>
-            <property name="toolButtonStyle">
-             <enum>Qt::ToolButtonIconOnly</enum>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QToolButton" name="stopServerToolButton">
-            <property name="toolTip">
-             <string>shutdown Server</string>
-            </property>
-            <property name="text">
-             <string>shutdown Server</string>
-            </property>
-            <property name="icon">
-             <iconset resource="resources.qrc">
-              <normaloff>:/icons/call-stop.png</normaloff>:/icons/call-stop.png</iconset>
-            </property>
-            <property name="iconSize">
-             <size>
-              <width>32</width>
-              <height>32</height>
-             </size>
+            <property name="checkable">
+             <bool>true</bool>
             </property>
             <property name="toolButtonStyle">
              <enum>Qt::ToolButtonIconOnly</enum>
@@ -163,17 +84,10 @@
           </item>
          </layout>
         </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="clientTab">
-       <attribute name="title">
-        <string>Client</string>
-       </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
-         <layout class="QGridLayout" name="gridLayout_2">
+         <layout class="QGridLayout" name="gridLayout">
           <item row="0" column="1">
-           <widget class="QLineEdit" name="clientAddressLineEdit">
+           <widget class="QLineEdit" name="serverAddressLineEdit">
             <property name="enabled">
              <bool>false</bool>
             </property>
@@ -182,22 +96,49 @@
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="clientPortLabel">
-            <property name="text">
-             <string>Port</string>
-            </property>
-           </widget>
-          </item>
           <item row="0" column="0">
-           <widget class="QLabel" name="clientAddressLabel">
+           <widget class="QLabel" name="serverAddressLabel">
             <property name="text">
              <string>Host</string>
             </property>
            </widget>
           </item>
+          <item row="0" column="3">
+           <widget class="QToolButton" name="serverAddressListenLocalhostToolButton">
+            <property name="toolTip">
+             <string>listen localhost</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset resource="resources.qrc">
+              <normaloff>:/icons/user-desktop.png</normaloff>:/icons/user-desktop.png</iconset>
+            </property>
+            <property name="checkable">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QToolButton" name="serverPortEditToolButton">
+            <property name="toolTip">
+             <string>edit port</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset resource="resources.qrc">
+              <normaloff>:/icons/draw-freehand.png</normaloff>:/icons/draw-freehand.png</iconset>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
           <item row="1" column="1">
-           <widget class="QSpinBox" name="clientPortSpinBox">
+           <widget class="QSpinBox" name="serverPortSpinBox">
             <property name="enabled">
              <bool>false</bool>
             </property>
@@ -212,8 +153,18 @@
             </property>
            </widget>
           </item>
-          <item row="1" column="2">
-           <widget class="QToolButton" name="clientPortEditToolButton">
+          <item row="1" column="0">
+           <widget class="QLabel" name="serverPortLabel">
+            <property name="text">
+             <string>Port</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QToolButton" name="serverAddressEditToolButton">
+            <property name="toolTip">
+             <string>edit address</string>
+            </property>
             <property name="text">
              <string>...</string>
             </property>
@@ -226,38 +177,78 @@
             </property>
            </widget>
           </item>
-          <item row="0" column="2">
-           <widget class="QToolButton" name="clientAddressEditToolButton">
+          <item row="0" column="4">
+           <widget class="QToolButton" name="serverAddressListenAllToolButton">
+            <property name="toolTip">
+             <string>listen globaly</string>
+            </property>
             <property name="text">
              <string>...</string>
             </property>
             <property name="icon">
              <iconset resource="resources.qrc">
-              <normaloff>:/icons/draw-freehand.png</normaloff>:/icons/draw-freehand.png</iconset>
+              <normaloff>:/icons/network-workgroup.png</normaloff>:/icons/network-workgroup.png</iconset>
             </property>
             <property name="checkable">
-             <bool>true</bool>
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3">
+           <widget class="QToolButton" name="serverPortDefaultToolButton">
+            <property name="toolTip">
+             <string>set Port back to 9615</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset resource="resources.qrc">
+              <normaloff>:/icons/draw-eraser.png</normaloff>:/icons/draw-eraser.png</iconset>
+            </property>
+            <property name="checkable">
+             <bool>false</bool>
             </property>
            </widget>
           </item>
          </layout>
         </item>
         <item>
+         <widget class="QListView" name="clientListView">
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+          <property name="alternatingRowColors">
+           <bool>true</bool>
+          </property>
+          <property name="selectionMode">
+           <enum>QAbstractItemView::NoSelection</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="clientTab">
+       <attribute name="title">
+        <string>Client</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
-           <widget class="QToolButton" name="connectClientToolButton">
+           <widget class="QToolButton" name="connectDisconnectClientToolButton">
             <property name="enabled">
              <bool>true</bool>
             </property>
             <property name="toolTip">
-             <string>connect Client</string>
+             <string>connect/disconnect client</string>
             </property>
             <property name="text">
              <string>connect Client</string>
             </property>
             <property name="icon">
              <iconset resource="resources.qrc">
-              <normaloff>:/icons/call-start.png</normaloff>:/icons/call-start.png</iconset>
+              <normaloff>:/icons/client-toggle.png</normaloff>:/icons/client-toggle.png</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -265,28 +256,8 @@
               <height>32</height>
              </size>
             </property>
-            <property name="toolButtonStyle">
-             <enum>Qt::ToolButtonIconOnly</enum>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QToolButton" name="disconnectClientToolButton">
-            <property name="toolTip">
-             <string>disconnect Client</string>
-            </property>
-            <property name="text">
-             <string>disconnect Client</string>
-            </property>
-            <property name="icon">
-             <iconset resource="resources.qrc">
-              <normaloff>:/icons/call-stop.png</normaloff>:/icons/call-stop.png</iconset>
-            </property>
-            <property name="iconSize">
-             <size>
-              <width>32</width>
-              <height>32</height>
-             </size>
+            <property name="checkable">
+             <bool>true</bool>
             </property>
             <property name="toolButtonStyle">
              <enum>Qt::ToolButtonIconOnly</enum>
@@ -308,22 +279,134 @@
           </item>
          </layout>
         </item>
+        <item>
+         <layout class="QGridLayout" name="gridLayout_2">
+          <item row="1" column="1">
+           <widget class="QSpinBox" name="clientPortSpinBox">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>65535</number>
+            </property>
+            <property name="value">
+             <number>9615</number>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QToolButton" name="clientAddressEditToolButton">
+            <property name="toolTip">
+             <string>edit address</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset resource="resources.qrc">
+              <normaloff>:/icons/draw-freehand.png</normaloff>:/icons/draw-freehand.png</iconset>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="clientPortLabel">
+            <property name="text">
+             <string>Port</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="clientAddressLabel">
+            <property name="text">
+             <string>Host</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="clientAddressLineEdit">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>127.0.0.1</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QToolButton" name="clientPortEditToolButton">
+            <property name="toolTip">
+             <string>edit port</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset resource="resources.qrc">
+              <normaloff>:/icons/draw-freehand.png</normaloff>:/icons/draw-freehand.png</iconset>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="3">
+           <widget class="QToolButton" name="clientAddressListenLocalhostToolButton">
+            <property name="toolTip">
+             <string>set address to localhost</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset resource="resources.qrc">
+              <normaloff>:/icons/user-desktop.png</normaloff>:/icons/user-desktop.png</iconset>
+            </property>
+            <property name="checkable">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3">
+           <widget class="QToolButton" name="clientPortDefaultToolButton">
+            <property name="toolTip">
+             <string>set Port back to 9615</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset resource="resources.qrc">
+              <normaloff>:/icons/draw-eraser.png</normaloff>:/icons/draw-eraser.png</iconset>
+            </property>
+            <property name="checkable">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
        </layout>
       </widget>
      </widget>
-    </item>
-    <item>
-     <spacer name="verticalSpacer">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>40</height>
-       </size>
-      </property>
-     </spacer>
     </item>
    </layout>
   </widget>
@@ -333,9 +416,9 @@
  </resources>
  <connections>
   <connection>
-   <sender>portEditToolButton</sender>
+   <sender>serverPortEditToolButton</sender>
    <signal>toggled(bool)</signal>
-   <receiver>portSpinBox</receiver>
+   <receiver>serverPortSpinBox</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
