@@ -137,8 +137,13 @@ class QgsRemoteControl(object):
         ## Client
         self.actionClientConnectDisconnect.toggled.connect(self.connectDisconnectClient)
         self.remoteControlDockWidget.connectDisconnectClientToolButton.toggled.connect(self.connectDisconnectClient)
+
+        ###
+        self.remoteControlDockWidget.startStopServerToolButton.hide()
+        self.remoteControlDockWidget.connectDisconnectClientToolButton.hide()
        
     def startStopServer(self, checked):
+        print "startStopServer", checked
         if checked:
             self.server = QgsRemoteCommandServer(host=self.config.serverAddress, port=self.config.serverPort)
             self.connectServerControls()

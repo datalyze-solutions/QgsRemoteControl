@@ -1,34 +1,13 @@
-Plugin Builder Results
+QGIS Remote Control Plugin
+--------------------------
 
-Your plugin QgsMessenger was created in:
-    /home/kaotika/Dokumente/Programmierung/QGIS/QgsMessenger
+This plugin let you connect severel QGIS instances and shares the canvas extent.
 
-Your QGIS plugin directory is located at:
-    /home/kaotika/.qgis2/python/plugins
+How to work with
+----------------
+- start the server with the toolbar button
+- connect the clients (all clients should be in the client list of the configuration dock widget)
+- check the sync button in all qgis clients you want to sync
+- move the map...the center point and zoomlevel should be the same on all instances
 
-What's Next:
-
-  * Copy the entire directory containing your new plugin to the QGIS plugin
-    directory
-
-  * Compile the ui file using pyuic4
-
-  * Compile the resources file using pyrcc4
-
-  * Test the plugin by enabling it in the QGIS plugin manager
-
-  * Customize it by editing the implementation file:
-         qgsmessenger.py
-
-  * Create your own custom icon, replacing the default icon.png
-
-  * Modify your user interface by opening qgsmessenger.ui
-    in Qt Designer (don't forget to compile it with pyuic4 after changing it)
-
-  * You can use the Makefile to compile your Ui and resource files when
-    you make changes. This requires GNU make (gmake)
-
-For more information, see the PyQGIS Developer Cookbook at:
-http://www.qgis.org/pyqgis-cookbook/index.html
-
-(C) 2011-2014 GeoApt LLC - geoapt.com
+The plugin is highly experimental.

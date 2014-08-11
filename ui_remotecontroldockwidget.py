@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui_remotecontroldockwidget.ui'
 #
-# Created: Mon Mar 10 11:29:15 2014
+# Created: Mon Aug 11 18:39:03 2014
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -25,6 +25,7 @@ class Ui_RemoteControlDockWidget(object):
         spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem)
         self.tabWidget = QtGui.QTabWidget(self.dockWidgetContents)
+        self.tabWidget.setEnabled(True)
         self.tabWidget.setObjectName(_fromUtf8("tabWidget"))
         self.serverTab = QtGui.QWidget()
         self.serverTab.setObjectName(_fromUtf8("serverTab"))
@@ -33,7 +34,7 @@ class Ui_RemoteControlDockWidget(object):
         self.horizontalLayout = QtGui.QHBoxLayout()
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
         self.startStopServerToolButton = QtGui.QToolButton(self.serverTab)
-        self.startStopServerToolButton.setEnabled(True)
+        self.startStopServerToolButton.setEnabled(False)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(_fromUtf8(":/icons/server-toggle.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.startStopServerToolButton.setIcon(icon)
@@ -112,7 +113,7 @@ class Ui_RemoteControlDockWidget(object):
         self.horizontalLayout_2 = QtGui.QHBoxLayout()
         self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
         self.connectDisconnectClientToolButton = QtGui.QToolButton(self.clientTab)
-        self.connectDisconnectClientToolButton.setEnabled(True)
+        self.connectDisconnectClientToolButton.setEnabled(False)
         icon5 = QtGui.QIcon()
         icon5.addPixmap(QtGui.QPixmap(_fromUtf8(":/icons/client-toggle.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.connectDisconnectClientToolButton.setIcon(icon5)
@@ -191,7 +192,7 @@ class Ui_RemoteControlDockWidget(object):
         RemoteControlDockWidget.setWidget(self.dockWidgetContents)
 
         self.retranslateUi(RemoteControlDockWidget)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QObject.connect(self.serverPortEditToolButton, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.serverPortSpinBox.setEnabled)
         QtCore.QObject.connect(self.serverAddressEditToolButton, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.serverAddressLineEdit.setEnabled)
         QtCore.QObject.connect(self.clientPortEditToolButton, QtCore.SIGNAL(_fromUtf8("toggled(bool)")), self.clientPortSpinBox.setEnabled)

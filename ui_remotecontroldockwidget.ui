@@ -30,8 +30,11 @@
     </item>
     <item>
      <widget class="QTabWidget" name="tabWidget">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="serverTab">
        <attribute name="title">
@@ -43,7 +46,7 @@
           <item>
            <widget class="QToolButton" name="startStopServerToolButton">
             <property name="enabled">
-             <bool>true</bool>
+             <bool>false</bool>
             </property>
             <property name="toolTip">
              <string>start/stop server</string>
@@ -238,7 +241,7 @@
           <item>
            <widget class="QToolButton" name="connectDisconnectClientToolButton">
             <property name="enabled">
-             <bool>true</bool>
+             <bool>false</bool>
             </property>
             <property name="toolTip">
              <string>connect/disconnect client</string>

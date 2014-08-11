@@ -24,7 +24,7 @@ email=m.ludwig@datalyze-solutions.com
 # changelog=
 
 # tags are comma separated with spaces allowed
-tags=
+tags=syncing
 
 homepage=
 tracker=
