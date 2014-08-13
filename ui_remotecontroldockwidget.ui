@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>261</width>
-    <height>298</height>
+    <width>265</width>
+    <height>321</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -215,6 +215,13 @@
            </widget>
           </item>
          </layout>
+        </item>
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>connected clients:</string>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="QListView" name="clientListView">

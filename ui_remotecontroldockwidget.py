@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui_remotecontroldockwidget.ui'
 #
-# Created: Mon Aug 11 18:39:03 2014
+# Created: Wed Aug 13 11:00:02 2014
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -17,7 +17,7 @@ except AttributeError:
 class Ui_RemoteControlDockWidget(object):
     def setupUi(self, RemoteControlDockWidget):
         RemoteControlDockWidget.setObjectName(_fromUtf8("RemoteControlDockWidget"))
-        RemoteControlDockWidget.resize(261, 298)
+        RemoteControlDockWidget.resize(265, 321)
         self.dockWidgetContents = QtGui.QWidget()
         self.dockWidgetContents.setObjectName(_fromUtf8("dockWidgetContents"))
         self.verticalLayout = QtGui.QVBoxLayout(self.dockWidgetContents)
@@ -99,6 +99,9 @@ class Ui_RemoteControlDockWidget(object):
         self.serverPortDefaultToolButton.setObjectName(_fromUtf8("serverPortDefaultToolButton"))
         self.gridLayout.addWidget(self.serverPortDefaultToolButton, 1, 3, 1, 1)
         self.verticalLayout_2.addLayout(self.gridLayout)
+        self.label = QtGui.QLabel(self.serverTab)
+        self.label.setObjectName(_fromUtf8("label"))
+        self.verticalLayout_2.addWidget(self.label)
         self.clientListView = QtGui.QListView(self.serverTab)
         self.clientListView.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)
         self.clientListView.setAlternatingRowColors(True)
@@ -216,6 +219,7 @@ class Ui_RemoteControlDockWidget(object):
         self.serverAddressListenAllToolButton.setText(QtGui.QApplication.translate("RemoteControlDockWidget", "...", None, QtGui.QApplication.UnicodeUTF8))
         self.serverPortDefaultToolButton.setToolTip(QtGui.QApplication.translate("RemoteControlDockWidget", "set Port back to 9615", None, QtGui.QApplication.UnicodeUTF8))
         self.serverPortDefaultToolButton.setText(QtGui.QApplication.translate("RemoteControlDockWidget", "...", None, QtGui.QApplication.UnicodeUTF8))
+        self.label.setText(QtGui.QApplication.translate("RemoteControlDockWidget", "connected clients:", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.serverTab), QtGui.QApplication.translate("RemoteControlDockWidget", "Server", None, QtGui.QApplication.UnicodeUTF8))
         self.connectDisconnectClientToolButton.setToolTip(QtGui.QApplication.translate("RemoteControlDockWidget", "connect/disconnect client", None, QtGui.QApplication.UnicodeUTF8))
         self.connectDisconnectClientToolButton.setText(QtGui.QApplication.translate("RemoteControlDockWidget", "connect Client", None, QtGui.QApplication.UnicodeUTF8))

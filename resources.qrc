@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="/">
+    <file>icons/help-about.png</file>
     <file>icons/draw-eraser.png</file>
     <file>icons/user-desktop.png</file>
     <file>icons/arrange-windows.png</file>

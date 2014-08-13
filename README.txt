@@ -2,6 +2,8 @@ QGIS Remote Control Plugin
 --------------------------
 
 This plugin let you connect severel QGIS instances and shares the canvas extent.
+The plugin sets up a TCP network server. So its possible to connect clients on
+the same or from different mashines.
 
 How to work with
 ----------------

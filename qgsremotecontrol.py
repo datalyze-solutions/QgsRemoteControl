@@ -35,6 +35,7 @@ from config import ConfigurationSettings
 from libs.remoteclient import QgsRemoteCommandClient
 from libs.remoteserver import QgsRemoteCommandServer
 from remotecontroldockwidget import RemoteControlDockWidget
+from ui_info import Ui_info
 
 class QgsRemoteControl(object): 
 
@@ -47,10 +48,10 @@ class QgsRemoteControl(object):
         self.canvas = self.iface.mapCanvas()
         self.mainWindow = self.iface.mainWindow()
         # initialize plugin directory
-        self.plugin_dir = os.path.dirname(__file__)
+        self.workingDir = os.path.dirname(os.path.abspath(__file__))        
         # initialize locale
         locale = QSettings().value("locale/userLocale")[0:2]
-        localePath = os.path.join(self.plugin_dir, 'i18n', 'qgsremotecontrol_{}.qm'.format(locale))
+        localePath = os.path.join(self.workingDir, 'i18n', 'qgsremotecontrol_{}.qm'.format(locale))
 
         if os.path.exists(localePath):
             self.translator = QTranslator()
@@ -63,9 +64,12 @@ class QgsRemoteControl(object):
         self.config = ConfigurationSettings()
         self.server = QgsRemoteCommandServer(host=self.config.serverAddress, port=self.config.serverPort)
         self.client = QgsRemoteCommandClient(self.iface, self.config, host=self.config.clientAddress, port=self.config.clientPort)
-
+        
     def initGui(self):
-        # client actions
+        self.actionInfo = QAction(QIcon(":/icons/help-about.png"), u"about", self.iface.mainWindow())
+        self.actionInfo.triggered.connect(self.showInfo)
+
+        # client actions        
         self.actionClientConnectDisconnect = QAction(QIcon(":/icons/client-toggle.png"), u"connect/disconnect client", self.iface.mainWindow())
         self.actionClientConnectDisconnect.setChecked(False)
         self.actionClientConnectDisconnect.setCheckable(True)
@@ -93,7 +97,8 @@ class QgsRemoteControl(object):
         self.remoteControlToolbar.addAction(self.actionServerStartStop)
         self.remoteControlToolbar.addAction(self.actionClientConnectDisconnect)
         self.remoteControlToolbar.addAction(self.actionClientSync)
-        self.remoteControlToolbar.addAction(self.actionClientArrangeWindows)        
+        self.remoteControlToolbar.addAction(self.actionClientArrangeWindows)
+        self.remoteControlToolbar.addAction(self.actionInfo)
         self.iface.mainWindow().addToolBar(Qt.TopToolBarArea, self.remoteControlToolbar)
 
         # dock widget
@@ -141,7 +146,12 @@ class QgsRemoteControl(object):
         ###
         self.remoteControlDockWidget.startStopServerToolButton.hide()
         self.remoteControlDockWidget.connectDisconnectClientToolButton.hide()
-       
+
+    def showInfo(self):
+        self.dialogInfo = dialogInfo(self.workingDir)
+        self.dialogInfo.setParent(self.iface.mainWindow(), self.dialogInfo.windowFlags())
+        self.dialogInfo.exec_()        
+        
     def startStopServer(self, checked):
         print "startStopServer", checked
         if checked:
@@ -248,4 +258,19 @@ class QgsRemoteControl(object):
         try:
             self.client.close()
         except:
-            pass        
+            pass
+
+class dialogInfo(QDialog, Ui_info):
+
+    def __init__(self, workingDir, infoHtml="README.html"):
+        super(dialogInfo, self).__init__()
+        self.setupUi(self)
+
+        self.workingDir = workingDir
+        self.infoHtml = infoHtml
+        self.goHome()
+        self.buttonHome.clicked.connect(self.goHome)
+
+    def goHome(self):
+        url = os.path.join(self.workingDir, self.infoHtml)
+        self.webView.setUrl(QUrl(url))        

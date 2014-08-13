@@ -1,32 +1,76 @@
+<!DOCTYPE HTML>
 <html>
-<body style='background-color:##D7ECF8;'>
-<h3>Plugin Builder Results</h3>
-<div id='help' style='font-size:.9em;'>
-Your plugin <b>QgsMessenger</b> was created in:<br>
-&nbsp;&nbsp;<b>/home/kaotika/Dokumente/Programmierung/QGIS/QgsMessenger</b>
-<p>
-Your QGIS plugin directory is located at:<br>
-&nbsp;&nbsp;<b>/home/kaotika/.qgis2/python/plugins</b>
-<p>
-<b>What's Next</b>
-<ol>
-    <li>Copy the entire directory containing your new plugin to the QGIS plugin directory
-    <li>Compile the ui file using pyuic4
-    <li>Compile the resources file using pyrcc4
-    <li>Test the plugin by enabling it in the QGIS plugin manager
-    <li>Customize it by editing the implementation file <b>qgsmessenger.py</b>
-    <li>Create your own custom icon, replacing the default <b>icon.png</b>
-    <li>Modify your user interface by opening <b>qgsmessenger.ui</b> in Qt Designer (don't forget to compile it with pyuic4 after changing it)
-    <li>You can use the <b>Makefile</b> to compile your Ui and resource files when you make changes. This requires GNU make (gmake)
-</ul>
-</div>
-<div style='font-size:.9em;'>
-<p>
-For more information, see the PyQGIS Developer Cookbook at:
-<a href="http://www.qgis.org/pyqgis-cookbook/index.html">http://www.qgis.org/pyqgis-cookbook/index.html</a>.
-</p>
-</div>
-<img src="http://geoapt.com/geoapt_logo_p.png" alt='GeoApt LLC' title='GeoApt LLC' align='absmiddle'>
-&copy;2011-2014 GeoApt LLC - geoapt.com
+<head>
+    <style type="text/css">
+    body {    
+        background: rgba(0, 0, 0, 0.1);
+        font-family: Arial, Times, serif;
+    }
+    .content-wrapper {
+        background: rgba(0, 0, 0, 0.66);
+        color: white;
+        margin: 10px;
+        border-radius: 20px;
+        box-shadow: 2px 2px 20px rgba(15, 12, 15, 0.7);
+    }
+    .content {
+        padding: 1px 20px;
+    }
+    .centered {
+        text-align: center;
+    }
+    #logo {
+        position: absolute;
+        top: 32px;
+        right: 48px;
+    }
+    </style>
+</head>
+<body>
+    <div class="content-wrapper">
+        <div class="content">
+            <div id="logo">
+                <a href="http://www.datalyze-solutions.com"><img src="icons/ds_logo.png"></a>                
+            </div>
+            <h2>QGIS Remote Control</h1>
+            <h3>Functionality</h3>            
+            <p>
+                This plugin let you connect severel QGIS instances and shares the canvas extent.
+                The plugin sets up a TCP network server. So its possible to connect clients on
+                the same or from different mashines.
+            </p>
+            <h3>Using it</h3>
+            <ul>
+                <li>open the configuration docking widget with the <img src="icons/configure.png" width="24px"></img> button</li>
+                <li>start the server with the "start/stop server" <img src="icons/server-toggle.png" width="24px"></img> button in the toolbar</li>
+                <li>connect the clients with the "connect/disconnect client" button <img src="icons/client-toggle.png" width="24px"></img> from the toolbar
+                    (all clients should be in the "connected clients" list of the configuration dock widget)</li>
+                <li>check the sync button in all qgis clients you want to sync <img src="icons/system-switch-user.png" width="24px"></img></li>
+                <li>move the map...the center point and zoomlevel should be the same on all instances</li>
+                <br/>
+                <li>
+                    the arrange button <img src="icons/arrange-windows.png" width="24px"> moves the connected
+                    windows on the same mashine (not on a different one) into a grid position depending on the client count:
+                    <ul>
+                        <br/>
+                        <li>2 clients: <img src="icons/readme/arrange2.jpg" width="50%"></li>
+                        <br/>
+                        <li>3 clients: <img src="icons/readme/arrange3.jpg" width="50%"></li>
+                        <br/>
+                        <li>4 clients: <img src="icons/readme/arrange4.jpg" width="50%"></li>
+                    </ul>
+                </li>
+            </ul>
+            <h3>Bugs</h3>
+            <p>
+                The plugin is highly experimental and not fully working yet.
+                You found a bug? You want to contribute with code or ideas? Contact us on the <a href="http://github.com/datalyze-solutions/QgsRemoteControl">project page</a>                
+            </p>                    
+            <p class="centered">
+                <a href="http://www.datalyze-solutions.com"><img src="icons/ds_made_by.png" width="196" height="196"></a>
+            </p>
+        </div>
+    </div>
 </body>
 </html>
+ 
